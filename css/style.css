@@ -1,0 +1,36 @@
+
+main {
+    text-align: center;
+}
+#board {
+    margin: auto;
+    background-color: black;
+    width: 92vmin;
+}
+#grid {
+
+    display: grid;
+
+    grid-template-columns: 30vmin 30vmin 30vmin;
+    grid-template-rows: 30vmin 30vmin 30vmin;
+    grid-gap: 1vmin;
+    background-color: black;
+}
+
+#grid * {
+    font-family: 'Permanent Marker', cursive;
+    background-color: white;
+    border: 0;
+    font-size: 20vmin;
+    box-shadow: none;
+    border-radius: 0px;
+    outline: none;
+}
+
+#p1 {
+    color: olive;
+}
+
+#p2 {
+    color: tomato;
+}
