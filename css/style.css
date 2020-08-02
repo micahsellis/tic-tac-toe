@@ -5,14 +5,14 @@ main {
 #board {
     margin: auto;
     background-color: black;
-    width: 92vmin;
+    width: 62vmin;
 }
 #grid {
 
     display: grid;
 
-    grid-template-columns: 30vmin 30vmin 30vmin;
-    grid-template-rows: 30vmin 30vmin 30vmin;
+    grid-template-columns: 20vmin 20vmin 20vmin;
+    grid-template-rows: 20vmin 20vmin 20vmin;
     grid-gap: 1vmin;
     background-color: black;
 }
@@ -21,13 +21,17 @@ main {
     font-family: 'Permanent Marker', cursive;
     background-color: white;
     border: 0;
-    font-size: 20vmin;
+    font-size: 14vmin;
+    text-align: center; 
     box-shadow: none;
     border-radius: 0px;
     outline: none;
+    justify-items: center;
+    align-items: center;
 }
 
 #p1 {
+
     color: olive;
 }
 

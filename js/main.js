@@ -1,10 +1,19 @@
 /*----- constants -----*/
 const COLORS = {
     keys: null,
-    p1: 'olive',
-    p2: 'tomato',
+    p1: 'X',
+    p2: 'O',
 };
-const WIN = [[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6]];
+const WIN = [
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,4,8],
+    [2,4,6]
+];
 
 /*----- app's state (variables) -----*/
 let board;
@@ -12,28 +21,20 @@ let turn;
 let winner; //player that won, a tie, game in play
 
 /*----- cached element references -----*/
-const resetEl = document.getElementById('reset');
 const gameStateEl = document.getElementById('gameState');
-const oneEl = document.getElementById('1');
-const twoEl = document.getElementById('2');
-const threeEl = document.getElementById('3');
-const fourEl = document.getElementById('4');
-const fiveEl = document.getElementById('5');
-const sixEl = document.getElementById('6');
-const sevenEl = document.getElementById('7');
-const eightEl = document.getElementById('8');
-const zeroEl = document.getElementById('0');
 
 /*----- event listeners -----*/
 document.getElementById("grid")
 .addEventListener("click", handleBoxClick);
+document.getElementById('reset').addEventListener("click", init);
 
 /*----- functions -----*/
 function init() {
     board = [null, null, null, null, null, null, null, null, null];
     turn = 1;
     winner = null;
-    render();
+    // render();
+    eraseBoard();
 };
 
 //TODO: what happens on click
@@ -50,25 +51,21 @@ function handleBoxClick(evt) {
         document.getElementById(playerChoice.toString()).textContent = "X";
         document.getElementById(playerChoice.toString()).style.color = "olive";
     }
+    console.log(board);
+    winner = isGameOver();
     turn *= -1;
     renderMessage(turn);
-    render();
-    isGameOver();
-    console.log(playerChoice);
 };
 
-function isGameOver() {
-    
-    let total = 0;
+function isGameOver(turn) {
     for (let i = 0; i < WIN.length; i++) {
-        for (let j = 0; j < WIN[i].length; j++) {
-            total += Math.abs(board[j]);
-            if (total === 3) {
-                retu
-            }
-        }
+        if (Math.abs(board[WIN[i][0]] + board[WIN[i][1]] + board[WIN[i][2]]) === 3) {
+            console.log(board[WIN[i][0]], board[WIN[i][1]], board[WIN[i][2]])
+            return board[WIN[i][0]];
+        };
     }
-    console.log(Math.abs(total))
+    if (board.includes(null)) return null;
+    return 'T';
 };
 
 function renderMessage(turn) {
@@ -87,8 +84,13 @@ function renderMessage(turn) {
     };
 };
 
-function render() {
-    ;
-};
+function eraseBoard() {
+    let els = document.querySelectorAll(".box")
+    for (let i = 0; i < els.length; i++){
+        els[i].style.color = 'white';
+        els[i].innerText = '';
+    };
+    gameStateEl.innerText = ' ';
+}
 
 init();
