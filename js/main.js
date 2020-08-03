@@ -71,7 +71,7 @@ function isGameOver() {
 function logic() {
   logicEl.innerText = '';
   for (let i = 0; i < WIN.length; i++) {
-    if ((Math.abs(board[WIN[i][0]] + board[WIN[i][1]] + board[WIN[i][2]]) >= 2) && ((board[WIN[i][0]] === null) || (board[WIN[i][1]] === null) || (board[WIN[i][2]] === null))) {
+    if ((Math.abs(board[WIN[i][0]] + board[WIN[i][1]] + board[WIN[i][2]]) >= 2) && (board[WIN[i][0]] === null || board[WIN[i][1]] === null || board[WIN[i][2]] === null)) {
       if (board[WIN[i][0]] === 1) {
         logicEl.innerText = `Careful! Player ${COLORS.p1} is winning!`;
       } else if (board[WIN[i][0]] === -1) {
