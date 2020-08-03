@@ -22,6 +22,7 @@ let winner; //player that won, a tie, game in play
 
 /*----- cached element references -----*/
 const gameStateEl = document.getElementById('gameState');
+const boxEls = document.querySelectorAll('.box');
 
 /*----- event listeners -----*/
 document.getElementById("grid")
@@ -51,16 +52,14 @@ function handleBoxClick(evt) {
         document.getElementById(playerChoice.toString()).textContent = "X";
         document.getElementById(playerChoice.toString()).style.color = "olive";
     }
-    console.log(board);
     winner = isGameOver();
     turn *= -1;
     renderMessage(turn);
 };
 
-function isGameOver(turn) {
+function isGameOver() {
     for (let i = 0; i < WIN.length; i++) {
         if (Math.abs(board[WIN[i][0]] + board[WIN[i][1]] + board[WIN[i][2]]) === 3) {
-            console.log(board[WIN[i][0]], board[WIN[i][1]], board[WIN[i][2]])
             return board[WIN[i][0]];
         };
     }
@@ -85,12 +84,11 @@ function renderMessage(turn) {
 };
 
 function eraseBoard() {
-    let els = document.querySelectorAll(".box")
-    for (let i = 0; i < els.length; i++){
-        els[i].style.color = 'white';
-        els[i].innerText = '';
+    for (let i = 0; i < boxEls.length; i++){
+        boxEls[i].style.color = 'white';
+        boxEls[i].innerText = '';
     };
     gameStateEl.innerText = ' ';
-}
+};
 
 init();
