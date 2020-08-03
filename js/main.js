@@ -88,7 +88,7 @@ function eraseBoard() {
         boxEls[i].style.color = 'white';
         boxEls[i].innerText = '';
     };
-    gameStateEl.innerText = ' ';
+    gameStateEl.innerText = 'Click on a square to start!';
 };
 
 init();
